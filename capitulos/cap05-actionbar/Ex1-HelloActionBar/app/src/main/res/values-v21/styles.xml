@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
+        <!-- Cor primária da action bar. -->
+        <item name="android:colorPrimary">@color/primary</item>
+        <!-- Cor primária escura da barra de sistema. -->
+        <item name="android:colorPrimaryDark">@color/primary_dark</item>
+        <!-- Cor de acentuação. -->
+        <item name="android:colorAccent">@color/accent</item>
+
+    </style>
+</resources>

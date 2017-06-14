@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.com.livroandroid.cap04_activity" >
+    package="br.com.livroandroid.hello" >
 
     <application
         android:allowBackup="true"
@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="br.com.livroandroid.hello.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,11 +16,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".BemVindoActivity" android:label="@string/title_bem_vindo_activity" android:parentActivityName=".MainActivity" >
+        <activity android:name="br.com.livroandroid.hello.BemVindoActivity" android:label="@string/title_bem_vindo_activity" android:parentActivityName="br.com.livroandroid.hello.MainActivity" >
             <!-- Parent activity meta-data to support API level 7+ -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="br.com.livroandroid.hello.MainActivity" />
         </activity>
     </application>
 

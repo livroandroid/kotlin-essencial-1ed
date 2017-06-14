@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:text="Agendar o alarme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button android:id="@+id/btAgendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agendar para 5 segundos" />
+
+    <Button android:id="@+id/btAgendarComRepeat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agendar e repetir a cada 30 seg" />
+
+    <Button
+        android:id="@+id/btCancelar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancelar" />
+
+</LinearLayout>

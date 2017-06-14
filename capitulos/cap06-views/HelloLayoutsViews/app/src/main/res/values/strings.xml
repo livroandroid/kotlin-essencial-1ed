@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">HelloLayoutsViews</string>
+    <string name="nome">Nome</string>
+    <string name="senha">Senha</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="login">Login</string>
+</resources>

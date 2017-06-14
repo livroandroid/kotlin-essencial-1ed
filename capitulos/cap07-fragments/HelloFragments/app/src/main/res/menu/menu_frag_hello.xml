@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_hello_frag"
+        android:icon="@drawable/smile1"
+        android:title="@string/hello"
+        app:showAsAction="always" />
+</menu>

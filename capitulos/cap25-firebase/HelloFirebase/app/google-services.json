@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "541787901488",
+    "firebase_url": "https://hellofirebase-6256c.firebaseio.com",
+    "project_id": "hellofirebase-6256c",
+    "storage_bucket": "hellofirebase-6256c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:541787901488:android:859510c09d95d5d1",
+        "android_client_info": {
+          "package_name": "br.com.livroandroid.hellofirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "541787901488-rp117bjasdq3nkmsb6u6vkhc7llq15lc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA56wFapIQwVhvVPzLxF1VsyHEsidR6a7Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
