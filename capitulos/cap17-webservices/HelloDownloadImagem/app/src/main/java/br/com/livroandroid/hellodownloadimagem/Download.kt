@@ -7,7 +7,7 @@ import java.net.URL
 
 object Download {
     fun downloadBitmap(url: String): Bitmap {
-        Thread.sleep(3000)
+        Thread.sleep(1500)
         URL(url).openStream().use {
             val bitmap = BitmapFactory.decodeStream(it)
             return bitmap
