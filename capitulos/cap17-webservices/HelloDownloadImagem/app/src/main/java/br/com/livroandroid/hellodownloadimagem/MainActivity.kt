@@ -26,8 +26,8 @@ class MainActivity : AppCompatActivity() {
             // Download da imagem
             val bitmap = Download.downloadBitmap(URL)
 
-            val url = "http://www.livroandroid.com.br/livro/carros/carros_classicos.json";
-            val json = URL(url).readText()
+//            val url = "http://www.livroandroid.com.br/livro/carros/carros_classicos.json";
+//            val json = URL(url).readText()
 
             // Atualiza o ImageView
             runOnUiThread {
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
                 dialog.dismiss()
 
-                Toast.makeText(baseContext, "json " + json, Toast.LENGTH_LONG).show()
+//                Toast.makeText(baseContext, "json " + json, Toast.LENGTH_LONG).show()
             }
 
         }.start()
