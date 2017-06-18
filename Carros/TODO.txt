@@ -1,0 +1,4 @@
+- Sem conexao e progress. como tratar tabs
+- res.zip novas msgs, dimes.xml
+
+viewPager.setOffscreenPageLimit(3)

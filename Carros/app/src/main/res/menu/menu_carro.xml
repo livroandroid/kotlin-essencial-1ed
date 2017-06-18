@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_editar"
+        android:title="@string/action_editar"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_deletar"
+        android:title="@string/action_deletar"
+        app:showAsAction="never" />
+</menu>
