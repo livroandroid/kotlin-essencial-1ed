@@ -2,30 +2,33 @@ package br.com.livroandroid.carros
 
 import android.app.Application
 import android.util.Log
-
-import com.squareup.otto.Bus
+import java.lang.IllegalStateException
 
 class CarrosApplication : Application() {
-    val bus = Bus()
+    private val TAG = "CarrosApplication"
 
+    // Chamado quando o Android criar o processo da aplicação
     override fun onCreate() {
         super.onCreate()
-        Log.d(TAG, "CarrosApplication.onCreate()")
         // Salva a instância para termos acesso como Singleton
-        instance = this
+        appInstance = this
     }
 
+    companion object {
+        // Singleton da classe Application
+        private var appInstance: CarrosApplication? = null
+
+        fun getInstance(): CarrosApplication {
+            if (appInstance == null) {
+                throw IllegalStateException("Configure a classe de Application no AndroidManifest.xml")
+            }
+            return appInstance!!
+        }
+    }
+
+    // Chamado quando o Android finalizar o processo da aplicação
     override fun onTerminate() {
         super.onTerminate()
         Log.d(TAG, "CarrosApplication.onTerminate()")
     }
-
-    companion object {
-
-        private val TAG = "CarrosApplication"
-        // Singleton
-        var instance: CarrosApplication? = null
-            private set
-    }
-
 }

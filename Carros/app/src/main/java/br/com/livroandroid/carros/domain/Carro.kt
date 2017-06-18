@@ -1,21 +1,27 @@
 package br.com.livroandroid.carros.domain
 
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
 import android.os.Parcel
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "carro")
 class Carro : Parcelable {
+    @PrimaryKey
+    var id: Long = 0
+    var tipo = ""
+    var nome = ""
+    var desc = ""
+    var urlFoto = ""
+    var urlInfo = ""
+    var urlVideo = ""
 
-    // Transient pro GSON não deserializar o id.
-    @Transient var id: Long = 0
+    var latitude: String = ""
+        get() = if (field.trim().isEmpty()) "0.0" else field
 
-    var tipo: String
-    var nome: String
-    var desc: String
-    var urlFoto: String
-    var urlInfo: String
-    var urlVideo: String
-    var latitude: String
-    var longitude: String
+    var longitude = ""
+        get() = if (field.trim().isEmpty()) "0.0" else field
 
     override fun toString(): String {
         return "Carro{nome='$nome'}"
@@ -53,15 +59,16 @@ class Carro : Parcelable {
 
     companion object {
         private val serialVersionUID = 6601006766832473959L
-
-        val CREATOR: Parcelable.Creator<Carro> = object : Parcelable.Creator<Carro> {
+        @JvmField val CREATOR: Parcelable.Creator<Carro> = object : Parcelable.Creator<Carro> {
             override fun createFromParcel(p: Parcel): Carro {
+                // Cria o objeto carro com um Parcel
                 val c = Carro()
                 c.readFromParcel(p)
                 return c
             }
 
-            override fun newArray(size: Int): Array<Carro> {
+            override fun newArray(size: Int): Array<Carro?> {
+                // Retorna um array vazio
                 return arrayOfNulls(size)
             }
         }

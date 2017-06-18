@@ -1,90 +1,107 @@
 package br.com.livroandroid.carros.activity
 
-import android.Manifest
-import android.content.DialogInterface
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.support.design.widget.TabLayout
+import android.support.design.widget.NavigationView
+import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
+import android.support.v4.view.GravityCompat
 import android.support.v4.view.ViewPager
-import android.support.v7.app.AlertDialog
-import android.view.View
+import android.support.v4.widget.DrawerLayout
+import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.widget.Toolbar
+import android.view.MenuItem
 
 import br.com.livroandroid.carros.R
 import br.com.livroandroid.carros.adapter.TabsAdapter
-import livroandroid.lib.utils.PermissionUtils
-import livroandroid.lib.utils.Prefs
+import br.com.livroandroid.carros.domain.TipoCarro
+import br.com.livroandroid.carros.extensions.setupToolbar
+import br.com.livroandroid.carros.extensions.toast
+import br.com.livroandroid.carros.utils.Prefs
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity() {
+import org.jetbrains.anko.startActivity
+
+
+class MainActivity : BaseActivity() , NavigationView.OnNavigationItemSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setUpToolbar()
+        setupToolbar(R.id.toolbar)
         setupNavDrawer()
         setupViewPagerTabs()
-        // FAB
-        findViewById(R.id.fab).setOnClickListener { v -> snack(v, "Exemplo de FAB Button.") }
 
-        // Solicita as permissões
-        val permissoes = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
-        PermissionUtils.validate(this, 0, *permissoes)
+        // FAB (variável fab gerada automaticamente pelo Kotlin Extensions)
+        fab.setOnClickListener() {
+            startActivity<CarroFormActivity>()
+        }
+
+
     }
-
-    // Configura o ViewPager + Tabs
+    // Configura o Navigation Drawer
+    private fun setupNavDrawer() {
+        val toolbar = findViewById(R.id.toolbar) as Toolbar
+        val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
+        val toggle = ActionBarDrawerToggle(
+                this, drawer, toolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close)
+        drawer.addDrawerListener(toggle)
+        toggle.syncState()
+        val navigationView = findViewById(R.id.nav_view) as NavigationView
+        navigationView.setNavigationItemSelectedListener(this)
+    }
     private fun setupViewPagerTabs() {
-        // ViewPager
-        val viewPager = findViewById(R.id.viewPager) as ViewPager
-        viewPager.offscreenPageLimit = 2
-        viewPager.adapter = TabsAdapter(context, supportFragmentManager)
-        // Tabs
-        val tabLayout = findViewById(R.id.tabLayout) as TabLayout
-        // Cria as tabs com o mesmo adapter utilizado pelo ViewPager
+        // Configura o ViewPager + Tabs
+        // As variáveis viewPager e tabLayout são geradas automaticamente pelo Kotlin Extensions
+        viewPager.setOffscreenPageLimit(3)
+        viewPager.setAdapter(TabsAdapter(context, getSupportFragmentManager()))
         tabLayout.setupWithViewPager(viewPager)
+        // Cor branca no texto (o fundo azul é definido no layout)
         val cor = ContextCompat.getColor(context, R.color.white)
-        // Cor branca no texto (o fundo azul foi definido no layout)
         tabLayout.setTabTextColors(cor, cor)
 
-        // Lê o índice da última tab utilizada no aplicativo
-        val tabIdx = Prefs.getInteger(context, "tabIdx")
-        viewPager.currentItem = tabIdx
-        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            override fun onPageScrolled(position: Int, positionOffset: Float,
-                                        positionOffsetPixels: Int) {
-            }
+        // Salva e Recupera a última Tab acessada.
+        val tabIdx = Prefs.tabIdx
 
-            override fun onPageSelected(position: Int) {
+        viewPager.setCurrentItem(tabIdx)
+        viewPager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener {
+            override fun onPageScrollStateChanged(p0: Int) { }
+            override fun onPageScrolled(p0: Int, p1: Float, p2: Int) { }
+            override fun onPageSelected(page: Int) {
                 // Salva o índice da página/tab selecionada
-                Prefs.setInteger(context, "tabIdx", viewPager.currentItem)
+                Prefs.tabIdx = page
             }
-
-            override fun onPageScrollStateChanged(state: Int) {}
         })
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
-        for (result in grantResults) {
-            if (result == PackageManager.PERMISSION_DENIED) {
-                // Alguma permissão foi negada, agora é com você :-)
-                alertAndFinish()
-                return
+    // Trata o evento do Navigation Drawer
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        // Handle navigation view item clicks here.
+        when (item.itemId) {
+            R.id.nav_item_carros_todos -> {
+                toast("Clicou em carros")
+            }
+            R.id.nav_item_carros_classicos -> {
+                startActivity<CarrosActivity>("tipo" to TipoCarro.classicos)
+            }
+            R.id.nav_item_carros_esportivos -> {
+                startActivity<CarrosActivity>("tipo" to TipoCarro.esportivos)
+            }
+            R.id.nav_item_carros_luxo -> {
+                startActivity<CarrosActivity>("tipo" to TipoCarro.luxo)
+            }
+            R.id.nav_item_site_livro -> {
+                startActivity<SiteLivroActivity>()
+            }
+            R.id.nav_item_settings -> {
+                toast("Clicou em configurações")
             }
         }
-
-        // Se chegou aqui está OK :-)
+        // Fecha o menu depois de tratar o evento
+        val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
+        drawer.closeDrawer(GravityCompat.START)
+        return true
     }
 
-    private fun alertAndFinish() {
-        run {
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle(R.string.app_name).setMessage("Para utilizar este aplicativo, você precisa aceitar as permissões.")
-            // Add the buttons
-            builder.setPositiveButton("OK") { dialog, id -> finish() }
-            val dialog = builder.create()
-            dialog.show()
-
-        }
-    }
 }

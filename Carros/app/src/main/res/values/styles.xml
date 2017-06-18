@@ -14,7 +14,7 @@
     <style name="AppTheme" parent="BaseAppTheme" />
     <!-- Nav Drawer -->
     <style name="AppTheme.NavDrawer" parent="BaseAppTheme" />
-    <!-- Temas para a Toolbar, ver include_toolbar.xml -->
+    <!-- Temas para a Toolbar, ver toolbar.xml -->
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

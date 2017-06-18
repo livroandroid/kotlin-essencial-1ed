@@ -1,60 +1,61 @@
 package br.com.livroandroid.carros.domain
 
-import android.content.Context
+import android.util.Base64
+import br.com.livroandroid.carros.CarrosApplication
+import br.com.livroandroid.carros.domain.dao.DatabaseManager
+import br.com.livroandroid.carros.extensions.fromJson
+import br.com.livroandroid.carros.extensions.toJson
+import br.com.livroandroid.carros.utils.HttpHelper
+import java.io.File
 
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-
-import java.io.IOException
-import java.lang.reflect.Type
-import java.util.ArrayList
-
-import br.com.livroandroid.carros.R
-import livroandroid.lib.utils.HttpHelper
-
+/**
+ * Implementação com OkHttp
+ */
 object CarroService {
+    private val BASE_URL = "http://livrowebservices.com.br/rest/carros"
 
-    private val URL = "http://livrowebservices.com.br/rest/carros"
-    private val TAG = CarroService::class.java!!.getSimpleName()
-
-    @Throws(IOException::class)
-    fun getCarros(context: Context, tipo: Int): List<Carro> {
-        var carros: List<Carro>? = null
-        if (tipo == R.string.favoritos) {
-            // Consulta no banco de dados
-            val db = CarroDB(context)
-            carros = db.findAll()
-        } else {
-            // Consulta no web service.
-            val tipoString = getTipo(tipo)
-            val url = URL + "/tipo/" + tipoString
-            // Faz a requisição HTTP no servidor e retorna a string com o conteúdo.
-            val http = HttpHelper()
-            http.LOG_ON = true
-            // GET
-            val json = http.doGet(url)
-            // Parser JSON
-            carros = parserJSON(context, json)
-        }
+    // Busca os carros por tipo (clássicos, esportivos ou luxo)
+    fun getCarros(tipo: TipoCarro): List<Carro> {
+        val url = "$BASE_URL/tipo/${tipo.name}"
+        val json = HttpHelper.get(url)
+        val carros = fromJson<List<Carro>>(json)
         return carros
     }
 
-    @Throws(IOException::class)
-    private fun parserJSON(context: Context, json: String): List<Carro> {
-        val listType = object : TypeToken<ArrayList<Carro>>() {
-
-        }.type
-        val carros = Gson().fromJson<List<Carro>>(json, listType)
-        return carros
+    // Salva um carro
+    fun save(carro: Carro): Response {
+        // Faz POST do JSON carro
+        val json = HttpHelper.post(BASE_URL, carro.toJson())
+        val response = fromJson<Response>(json)
+        return response
     }
 
-    // Converte a constante para string, para criar a URL do web service.
-    private fun getTipo(tipo: Int): String {
-        if (tipo == R.string.classicos) {
-            return "classicos"
-        } else if (tipo == R.string.esportivos) {
-            return "esportivos"
+    // Deleta um carro
+    fun delete(carro: Carro): Response {
+        val url = "$BASE_URL/${carro.id}"
+        val json = HttpHelper.delete(url)
+        val response = fromJson<Response>(json)
+        if(response.isOk()) {
+            // Se removeu do servidor, remove dos favoritos
+            val dao = DatabaseManager.getCarroDAO()
+            dao.delete(carro)
         }
-        return "luxo"
+        return response
+    }
+
+    fun postFoto(file: File): Response {
+        val url = "$BASE_URL/postFotoBase64"
+
+        // Converte para Base64
+        val bytes = file.readBytes()
+        val base64 = Base64.encodeToString(bytes, Base64.NO_WRAP)
+
+        val params = mapOf("fileName" to file.name, "base64" to base64)
+
+        val json = HttpHelper.postForm(url, params)
+
+        val response = fromJson<Response>(json)
+
+        return response
     }
 }

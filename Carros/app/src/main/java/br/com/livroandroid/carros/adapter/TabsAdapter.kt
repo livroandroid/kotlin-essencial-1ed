@@ -1,41 +1,44 @@
 package br.com.livroandroid.carros.adapter
 
 import android.content.Context
+import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-
-import br.com.livroandroid.carros.R
+import br.com.livroandroid.carros.domain.TipoCarro
 import br.com.livroandroid.carros.fragments.CarrosFragment
 
+import br.com.livroandroid.carros.fragments.FavoritosFragment
+
 class TabsAdapter(private val context: Context, fm: FragmentManager) : FragmentPagerAdapter(fm) {
-    override fun getCount(): Int {
-        return 4
+    // Qtde de Tabs
+    override fun getCount() = 4
+
+    // Retorna o tipo pela posição
+    fun getTipoCarro(position: Int) = when (position) {
+        0 -> TipoCarro.classicos
+        1 -> TipoCarro.esportivos
+        2 -> TipoCarro.luxo
+        else -> TipoCarro.favoritos
     }
 
+    // Título da Tab
     override fun getPageTitle(position: Int): CharSequence {
-        if (position == 0) {
-            return context.getString(R.string.classicos)
-        } else if (position == 1) {
-            return context.getString(R.string.esportivos)
-        } else if (position == 2) {
-            return context.getString(R.string.luxo)
-        }
-        return context.getString(R.string.favoritos)
+        val tipo = getTipoCarro(position)
+        return context.getString(tipo.string)
     }
 
+    // Fragment com a lista de carros
     override fun getItem(position: Int): Fragment {
-        var f: Fragment? = null
-        if (position == 0) {
-            f = CarrosFragment.newInstance(R.string.classicos)
-        } else if (position == 1) {
-            f = CarrosFragment.newInstance(R.string.esportivos)
-        } else if (position == 2) {
-            f = CarrosFragment.newInstance(R.string.luxo)
-        } else {
-            f = CarrosFragment.newInstance(R.string.favoritos)
+        if (position == 3) {
+            // Favoritos
+            return FavoritosFragment()
         }
+        // Clássicos, Esportivos e Luxo
+        val tipo = getTipoCarro(position)
+        val f: Fragment = CarrosFragment()
+        f.arguments = Bundle()
+        f.arguments.putSerializable("tipo", tipo)
         return f
     }
 }
-

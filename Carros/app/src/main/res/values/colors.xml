@@ -23,4 +23,8 @@
     <color name="refresh_progress_3">#CC0000</color>
     <!-- vermelho -->
 
+    <!-- Favoritos -->
+    <color name="favorito_on">#E91E63</color>
+    <color name="favorito_off">#cccccc</color>
+
 </resources>

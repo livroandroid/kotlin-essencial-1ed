@@ -4,22 +4,25 @@
         <!-- Lista com todos os carros -->
         <item
             android:id="@+id/nav_item_carros_todos"
-
+            android:checked="true"
             android:icon="@drawable/ic_drawer_carro"
             android:title="@string/carros" />
         <!-- Lista com os carros clássicos -->
         <item
             android:id="@+id/nav_item_carros_classicos"
+            android:checked="true"
             android:icon="@drawable/ic_drawer_carro"
             android:title="@string/classicos" />
         <!-- Lista com os carros esportivos -->
         <item
             android:id="@+id/nav_item_carros_esportivos"
-            android:icon="@drawable/ic_drawer_carro" android:checked="true"
+            android:checked="true"
+            android:icon="@drawable/ic_drawer_carro"
             android:title="@string/esportivos" />
         <!-- Lista com os carros de luxo -->
         <item
             android:id="@+id/nav_item_carros_luxo"
+            android:checked="true"
             android:icon="@drawable/ic_drawer_carro"
             android:title="@string/luxo" />
         <!-- WebView com informações sobre o livro -->

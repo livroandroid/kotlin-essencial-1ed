@@ -10,15 +10,4 @@
     <dimen name="foto_carro_width">260dp</dimen>
     <dimen name="foto_carro_height">110dp</dimen>
 
-    <!-- Largura/Altura da img do carro -->
-    <dimen name="img_carro_adapter_width">250dp</dimen>
-    <dimen name="img_carro_adapter_height">107dp</dimen>
-    <dimen name="img_carro_width">300dp</dimen>
-    <dimen name="img_carro_height">128dp</dimen>
-    <dimen name="app_bar_height">180dp</dimen>
-
-    <!-- EditarCarroFragment -->
-    <dimen name="popup_width">300dp</dimen>
-    <dimen name="popup_height">300dp</dimen>
-
 </resources>

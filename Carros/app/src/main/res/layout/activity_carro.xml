@@ -9,11 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <!-- Aqui é a parte do fragment que deve fazer a rolagem -->
-        <FrameLayout
-            android:id="@+id/CarroFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        <!-- Layout com detalhes do carro -->
+        <include layout="@layout/activity_carro_contents" />
     </android.support.v4.widget.NestedScrollView>
     <!-- Layout da app bar -->
     <android.support.design.widget.AppBarLayout
@@ -29,6 +26,7 @@
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            <!-- Esta é a imagem do header -->
             <ImageView
                 android:id="@+id/appBarImg"
                 android:layout_width="match_parent"

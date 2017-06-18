@@ -18,7 +18,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/text"
+            android:id="@+id/tNome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -30,13 +30,13 @@
             <!-- Foto do carro -->
             <ImageView
                 android:id="@+id/img"
-                android:layout_width="@dimen/img_carro_adapter_width"
-                android:layout_height="@dimen/img_carro_adapter_height"
+                android:layout_width="@dimen/foto_carro_width"
+                android:layout_height="@dimen/foto_carro_height"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="6dp" />
             <!-- Barra de progresso enquanto carrega a foto -->
             <ProgressBar
-                android:id="@+id/progressImg"
+                android:id="@+id/progress"
                 style="@android:style/Widget.ProgressBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
