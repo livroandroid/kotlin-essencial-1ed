@@ -6,7 +6,7 @@
 
 Código compilado com Android Studio 3.0
 
-Este livro é identico ao livro Android Essencial, mas é escrito em Kotlin:
+Este livro é parecido com o livro Android Essencial, mas é escrito em Kotlin:
 
 Veja algumas das novidades do livro:
 
