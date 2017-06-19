@@ -3,9 +3,6 @@ package br.com.livroandroid.carros.domain.dao
 import android.arch.persistence.room.Room
 import br.com.livroandroid.carros.CarrosApplication
 
-/**
- * Created by rlecheta on 17/06/17.
- */
 object DatabaseManager {
     // Singleton do Room: banco de dados
     private var dbInstance: CarrosDatabase
