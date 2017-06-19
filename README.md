@@ -1,35 +1,25 @@
-# Livro Google Android 5ª edição
+# Livro Android Essencial em Kotlin
 
 * http://livroandroid.com.br
 
 Código compilado com Android Studio 3.0
 
-<pre>
-compileSdkVersion 25
-buildToolsVersion "25.0.3"
-</pre>
+Este livro é identico ao livro Android Essencial, mas é escrito em Kotlin:
 
-- Libs de compatibilidade:
+Veja algumas das novidades do livro:
 
-<pre>
-compile 'com.android.support:appcompat-v7:25.3.1'
-</pre>
-
-- Google Play Services
-
-<pre>
-compile 'com.google.android.gms:play-services-maps:10.2.6'
-compile 'com.google.android.gms:play-services-location:10.2.6'
-</pre>
-
-
-O aplicativo dos carros tem 2 diferenças entre a 5ª edição e 4ª edição:
-
-1) Foi usado o NavigationView para criar o menu lateral (novo componente do Material Design).  
-2) Usei a lib do Material Design para criar as animações da toolbar e rolagem da tela.
-
-Na pasta <b>Carros</b> você pode ver o projeto dos Carros concluído. Em cada zip, você pode ver o status passo a passo do projeto.
-
-O arquivo <b>res.zip</b> contém o arquivo zip com as imagens e recursos utilizadas no projeto dos carros.
-
-<img src="http://livroandroid.com.br/imgs/livro_android.png" />
+- Exemplos no Android Studio 3
+- Compatibilidade com Android O
+- Capítulo de introdução ao Kotlin (sintaxe, extensios, lambdas, etc)
+- Capítulos básicos sobre Android (view, activity, fragments, etc)
+- Desenvolvimento passo a passo do projeto dos carros
+    - Interface com Menu Lateral (Navigation Drawer)
+    - Interface com Tabs + ViewPager
+    - Listas e Cards
+    - Consulta em Web Services
+    - O aplicativo permite salvar e excluir carros pelo web service
+    - O aplicativo permite tirar fotos do carro e enviar ao servidor
+    - Utiliza boas práticas de interface.
+- Capítulos sobre BroadcastReceiver, Services, Alarmes, Push
+- Capítulo de Push atualizado com Firebase.
+- Diversas dicas de Kotlin durante o livro.
