@@ -2,16 +2,18 @@
 
 * http://livroandroid.com.br
 
+<img src="https://raw.githubusercontent.com/livroandroid/kotlin-essencial-1ed/master/kotlin.png"></img>
+
 Código compilado com Android Studio 3.0
 
 Este livro é identico ao livro Android Essencial, mas é escrito em Kotlin:
 
 Veja algumas das novidades do livro:
 
-- Exemplos no Android Studio 3
+- Exemplos feitos no Android Studio 3
 - Compatibilidade com Android O
-- Capítulo de introdução ao Kotlin (sintaxe, extensios, lambdas, etc)
-- Capítulos básicos sobre Android (view, activity, fragments, etc)
+- Capítulo de introdução ao Kotlin (sintaxe, extensions, lambdas, etc)
+- Capítulos básicos sobre Android (view, activity, toolbar, fragments, etc)
 - Desenvolvimento passo a passo do projeto dos carros
     - Interface com Menu Lateral (Navigation Drawer)
     - Interface com Tabs + ViewPager
@@ -19,6 +21,7 @@ Veja algumas das novidades do livro:
     - Consulta em Web Services
     - O aplicativo permite salvar e excluir carros pelo web service
     - O aplicativo permite tirar fotos do carro e enviar ao servidor
+    - Salvar os carros no favoritos com banco de dados.
     - Utiliza boas práticas de interface.
 - Capítulos sobre BroadcastReceiver, Services, Alarmes, Push
 - Capítulo de Push atualizado com Firebase.
