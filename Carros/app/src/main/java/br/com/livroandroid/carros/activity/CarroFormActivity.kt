@@ -11,6 +11,7 @@ import br.com.livroandroid.carros.CarrosApplication
 import br.com.livroandroid.carros.R
 import br.com.livroandroid.carros.domain.Carro
 import br.com.livroandroid.carros.domain.CarroService
+import br.com.livroandroid.carros.domain.CarroServiceRetrofit
 import br.com.livroandroid.carros.domain.TipoCarro
 import br.com.livroandroid.carros.domain.event.SaveCarroEvent
 import br.com.livroandroid.carros.extensions.*
@@ -103,7 +104,7 @@ class CarroFormActivity : AppCompatActivity() {
             // Se tiver foto, faz upload.
             val file = camera.file
             if (file != null && file.exists()) {
-                val response = CarroService.postFoto(file)
+                val response = CarroServiceRetrofit.postFoto(file)
                 if (response.isOk()) {
                     // Atualiza a URL da foto no carro
                     c.urlFoto = response.url

@@ -15,4 +15,8 @@ interface CarrosREST {
 
     @DELETE("{id}")
     fun delete(@Path("id") id: Long): Call<Response>
+
+    @FormUrlEncoded
+    @POST("postFotoBase64")
+    fun postFoto(fileName:String,base64:String): Call<Response>
 }
