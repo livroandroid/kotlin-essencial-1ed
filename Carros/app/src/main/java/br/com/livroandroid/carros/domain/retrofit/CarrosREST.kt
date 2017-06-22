@@ -18,5 +18,5 @@ interface CarrosREST {
 
     @FormUrlEncoded
     @POST("postFotoBase64")
-    fun postFoto(fileName:String,base64:String): Call<Response>
+    fun postFoto(@Field("fileName") fileName:String, @Field("base64") base64:String): Call<Response>
 }

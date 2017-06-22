@@ -44,6 +44,15 @@ open class CarrosFragment : BaseFragment() {
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.itemAnimator = DefaultItemAnimator()
         recyclerView.setHasFixedSize(true)
+
+        // Swipe to Refresh
+        swipeToRefresh.setOnRefreshListener {
+            taskCarros()
+        }
+        swipeToRefresh.setColorSchemeResources(
+                R.color.refresh_progress_1,
+                R.color.refresh_progress_2,
+                R.color.refresh_progress_3)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -59,6 +68,9 @@ open class CarrosFragment : BaseFragment() {
             // Atualiza a lista na UI Thread
             uiThread {
                 recyclerView.adapter = CarroAdapter(carros) { onClickCarro(it) }
+
+                // Termina a animação do Swipe to Refresh
+                swipeToRefresh.isRefreshing = false
             }
         }
     }

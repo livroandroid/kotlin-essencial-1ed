@@ -24,6 +24,9 @@ class FavoritosFragment : CarrosFragment() {
             carros = FavoritosService.getCarros()
             uiThread {
                 recyclerView.adapter = CarroAdapter(carros) { onClickCarro(it) }
+
+                // Termina a animação do Swipe to Refresh
+                swipeToRefresh.isRefreshing = false
             }
         }
     }
