@@ -53,7 +53,7 @@ class CarroActivity : BaseActivity() {
 
         // Adiciona o fragment do Mapa
         val mapaFragment = MapaFragment()
-        mapaFragment.setArguments(intent.extras)
+        mapaFragment.arguments = intent.extras
         supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.mapaFragment, mapaFragment)
@@ -80,7 +80,7 @@ class CarroActivity : BaseActivity() {
         // Troca a cor conforme o status do favoritos
         val fundo = ContextCompat.getColor(this, if (favorito) R.color.favorito_on else R.color.favorito_off)
         val cor = ContextCompat.getColor(this, if (favorito) R.color.yellow else R.color.favorito_on)
-        fab.setBackgroundTintList(ColorStateList(arrayOf(intArrayOf(0)), intArrayOf(fundo)))
+        fab.backgroundTintList = ColorStateList(arrayOf(intArrayOf(0)), intArrayOf(fundo))
         fab.setColorFilter(cor)
     }
 

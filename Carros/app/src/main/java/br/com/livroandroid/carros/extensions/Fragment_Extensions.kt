@@ -1,4 +1,5 @@
 package br.com.livroandroid.carros.extensions
+
 import android.support.annotation.StringRes
 import android.support.v4.app.Fragment
 import android.widget.Toast

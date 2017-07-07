@@ -32,7 +32,7 @@ class AboutDialog : DialogFragment() {
                 .setTitle(R.string.about_dialog_title)
                 .setView(view)
                 .setPositiveButton(R.string.ok
-                ) { dialog, whichButton -> dialog.dismiss() }
+                ) { dialog, _ -> dialog.dismiss() }
                 .create()
     }
 

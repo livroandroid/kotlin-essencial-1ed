@@ -35,9 +35,8 @@ class MainActivity : BaseActivity() , NavigationView.OnNavigationItemSelectedLis
         fab.setOnClickListener() {
             startActivity<CarroFormActivity>()
         }
-
-
     }
+
     // Configura o Navigation Drawer
     private fun setupNavDrawer() {
         val toolbar = findViewById(R.id.toolbar) as Toolbar
@@ -54,8 +53,8 @@ class MainActivity : BaseActivity() , NavigationView.OnNavigationItemSelectedLis
     private fun setupViewPagerTabs() {
         // Configura o ViewPager + Tabs
         // As variáveis viewPager e tabLayout são geradas automaticamente pelo Kotlin Extensions
-        viewPager.setOffscreenPageLimit(3)
-        viewPager.setAdapter(TabsAdapter(context, getSupportFragmentManager()))
+        viewPager.offscreenPageLimit = 3
+        viewPager.adapter = TabsAdapter(context, supportFragmentManager)
         tabLayout.setupWithViewPager(viewPager)
         // Cor branca no texto (o fundo azul é definido no layout)
         val cor = ContextCompat.getColor(context, R.color.white)
@@ -64,7 +63,7 @@ class MainActivity : BaseActivity() , NavigationView.OnNavigationItemSelectedLis
         // Salva e Recupera a última Tab acessada.
         val tabIdx = Prefs.tabIdx
 
-        viewPager.setCurrentItem(tabIdx)
+        viewPager.currentItem = tabIdx
         viewPager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(p0: Int) { }
             override fun onPageScrolled(p0: Int, p1: Float, p2: Int) { }

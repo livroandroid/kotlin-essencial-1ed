@@ -15,11 +15,14 @@ fun AppCompatActivity.onClick(@IdRes viewId: Int, onClick: (v: android.view.View
     val view = findViewById(viewId)
     view.setOnClickListener { onClick(it) }
 }
+
 // Mostra um toast
 fun Activity.toast(message: CharSequence, length: Int = Toast.LENGTH_SHORT) =
         Toast.makeText(this, message, length).show()
+
 fun Activity.toast(@StringRes message: Int, length: Int = Toast.LENGTH_SHORT) =
         Toast.makeText(this, message, length).show()
+
 // Configura a Toolbar
 fun AppCompatActivity.setupToolbar(@IdRes id: Int, title: String? = null, upNavigation: Boolean = false): ActionBar {
     val toolbar = findViewById(id) as Toolbar
@@ -28,9 +31,10 @@ fun AppCompatActivity.setupToolbar(@IdRes id: Int, title: String? = null, upNavi
         supportActionBar?.title = title;
     }
     supportActionBar?.setDisplayHomeAsUpEnabled(upNavigation)
-    Log.d("carros","Up nav config em $upNavigation $supportActionBar")
+    Log.d("carros", "Up nav config em $upNavigation $supportActionBar")
     return supportActionBar!!
 }
+
 // Adiciona o fragment no layout
 fun AppCompatActivity.addFragment(@IdRes layoutId: Int, fragment: Fragment) {
     fragment.arguments = intent.extras

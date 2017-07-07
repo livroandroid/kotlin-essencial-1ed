@@ -21,11 +21,11 @@ import com.google.android.gms.maps.model.MarkerOptions
 class MapaFragment : BaseFragment(), OnMapReadyCallback {
     // Objeto que controla o Google Maps
     private var map: GoogleMap? = null
-    val carro by lazy { arguments.getParcelable<Carro>("carro") }
+    val carro:Carro by lazy { arguments.getParcelable<Carro>("carro") }
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, b: Bundle?): View? {
         val view = inflater?.inflate(R.layout.fragment_mapa, container, false)
         // Inicia o Mapa
-        val mapFragment = getChildFragmentManager().findFragmentById(R.id.mapFragment) as SupportMapFragment
+        val mapFragment = childFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
         mapFragment.getMapAsync(this)
         return view
     }

@@ -1,4 +1,3 @@
-- Sem conexao e progress. como tratar tabs
-- res.zip novas msgs, dimes.xml
+val dao = CarrosApplication.getInstance().getDatabase().carroDAO()
 
-viewPager.setOffscreenPageLimit(3)
+findViewById
