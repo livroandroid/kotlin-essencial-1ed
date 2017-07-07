@@ -16,8 +16,8 @@ class MainActivity : DebugActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btLogin = findViewById(R.id.btLogin) as Button
-        //btLogin.setOnClickListener { onClickLogin() }
+        val btLogin = findViewById(R.id.btLogin)
+        btLogin.setOnClickListener { onClickLogin() }
     }
 
     fun onClickLogin() {

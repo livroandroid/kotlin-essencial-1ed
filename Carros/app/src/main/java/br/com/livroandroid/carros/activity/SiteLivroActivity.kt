@@ -30,6 +30,9 @@ class SiteLivroActivity : BaseActivity() {
                 R.color.refresh_progress_1,
                 R.color.refresh_progress_2,
                 R.color.refresh_progress_3)
+
+        //webview.loadUrl("javascript:alert('Olá')")
+
     }
 
     private fun setWebViewClient(webview: WebView) {
