@@ -9,7 +9,7 @@ import android.os.Bundle
 import android.util.Log
 
 /* Activity que imprime logs nos métodos de ciclo de vida */
-open class DebugActivity : Activity() {
+open class DebugActivity : AppCompat() {
     private val TAG = "livro"
 
     // Nome da classe sem o pacote

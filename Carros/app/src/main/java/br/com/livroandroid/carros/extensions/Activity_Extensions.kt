@@ -8,11 +8,12 @@ import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 
 // findViewById + setOnClickListener
 fun AppCompatActivity.onClick(@IdRes viewId: Int, onClick: (v: android.view.View?) -> Unit) {
-    val view = findViewById(viewId)
+    val view = findViewById<View>(viewId)
     view.setOnClickListener { onClick(it) }
 }
 
@@ -25,7 +26,7 @@ fun Activity.toast(@StringRes message: Int, length: Int = Toast.LENGTH_SHORT) =
 
 // Configura a Toolbar
 fun AppCompatActivity.setupToolbar(@IdRes id: Int, title: String? = null, upNavigation: Boolean = false): ActionBar {
-    val toolbar = findViewById(id) as Toolbar
+    val toolbar = findViewById<Toolbar>(id)
     setSupportActionBar(toolbar)
     if (title != null) {
         supportActionBar?.title = title;

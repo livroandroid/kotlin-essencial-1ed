@@ -14,16 +14,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        val videoView = findViewById(R.id.videoView) as VideoView
-//        videoView.setMediaController(MediaController(this))
+        val videoView = findViewById(R.id.videoView) as VideoView
+        videoView.setMediaController(MediaController(this))
         val url = "http://www.livroandroid.com.br/livro/carros/esportivos/ferrari_ff.mp4"
-//        videoView.setVideoURI(Uri.parse(url))
-//        videoView.start()
-//
-//        // Intent para tocar o vídeo no player nativo
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.setDataAndType(Uri.parse(url), "video/*")
-        startActivity(intent)
+        videoView.setVideoURI(Uri.parse(url))
+        videoView.start()
+
+        // Intent para tocar o vídeo no player nativo
+        /*val intent = Intent(Intent.ACTION_VIEW)
+        intent.setDataAndType(Uri.parse(url), "video*//*")
+        startActivity(intent)*/
 
 //        val player = MediaPlayer.create(this, R.raw.linkin_park1)
 //        player.start()

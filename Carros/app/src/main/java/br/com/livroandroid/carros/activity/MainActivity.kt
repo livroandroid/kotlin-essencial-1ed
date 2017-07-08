@@ -39,15 +39,15 @@ class MainActivity : BaseActivity() , NavigationView.OnNavigationItemSelectedLis
 
     // Configura o Navigation Drawer
     private fun setupNavDrawer() {
-        val toolbar = findViewById(R.id.toolbar) as Toolbar
-        val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
         val toggle = ActionBarDrawerToggle(
                 this, drawer, toolbar,
                 R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close)
         drawer.addDrawerListener(toggle)
         toggle.syncState()
-        val navigationView = findViewById(R.id.nav_view) as NavigationView
+        val navigationView = findViewById<NavigationView>(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
     }
     private fun setupViewPagerTabs() {
@@ -98,7 +98,7 @@ class MainActivity : BaseActivity() , NavigationView.OnNavigationItemSelectedLis
             }
         }
         // Fecha o menu depois de tratar o evento
-        val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
+        val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
         drawer.closeDrawer(GravityCompat.START)
         return true
     }
