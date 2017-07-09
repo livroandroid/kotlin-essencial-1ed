@@ -18,10 +18,11 @@ class MainActivity : AppCompatActivity() {
             ft.commit()
 
             // OnClick para demonstrar como chamar método do fragment
-            findViewById(R.id.btHello).setOnClickListener {
+            findViewById<View>(R.id.btHello).setOnClickListener {
                 val fm = supportFragmentManager
-                val frag1 = fm.findFragmentByTag("HelloFragment") as HelloFragment
-                frag1.hello()
+                // Busca o fragment que foi inserido
+                val frag1 = fm.findFragmentByTag("HelloFragment") as HelloFragment?
+                frag1?.hello()
             }
         }
     }

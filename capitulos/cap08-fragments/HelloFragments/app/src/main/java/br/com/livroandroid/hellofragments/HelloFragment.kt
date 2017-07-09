@@ -24,7 +24,7 @@ class HelloFragment : Fragment() {
     }
 
     fun toast(s: String) {
-        Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
+        Toast.makeText(activity, s, Toast.LENGTH_SHORT).show();
     }
 
     fun hello() {
