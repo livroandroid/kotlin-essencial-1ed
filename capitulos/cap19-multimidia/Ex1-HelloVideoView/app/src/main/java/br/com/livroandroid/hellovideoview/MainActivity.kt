@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val videoView = findViewById(R.id.videoView) as VideoView
+        val videoView = findViewById<VideoView>(R.id.videoView)
         videoView.setMediaController(MediaController(this))
         val url = "http://www.livroandroid.com.br/livro/carros/esportivos/ferrari_ff.mp4"
         videoView.setVideoURI(Uri.parse(url))

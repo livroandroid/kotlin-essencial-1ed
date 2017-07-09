@@ -15,13 +15,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val img = findViewById(R.id.img) as ImageView
+        val img = findViewById<ImageView>(R.id.img)
 
         val dialog = ProgressDialog.show(this, "Download",
 			"Fazendo o download da imagem, por favor aguarde...", false, true)
 
         Thread {
-            val URL = "http://static.novatec.com.br/capas-ampliadas/capa-ampliada-9788575224687.jpg"
+            val URL = "http://livroandroid.com.br/site/imgs/livro_android.png"
 
             // Download da imagem
             val bitmap = Download.downloadBitmap(URL)

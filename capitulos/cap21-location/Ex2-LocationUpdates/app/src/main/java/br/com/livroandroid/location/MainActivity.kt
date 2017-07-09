@@ -1,6 +1,7 @@
 package br.com.livroandroid.location
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.Location
@@ -30,7 +31,7 @@ import java.util.*
  * @author Ricardo Lecheta
  */
 class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
-    protected var map: GoogleMap? = null
+    private var map: GoogleMap? = null
     private var mapFragment: SupportMapFragment? = null
     private var mGoogleApiClient: GoogleApiClient? = null
 
@@ -125,10 +126,10 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.Co
             map?.animateCamera(update)
 
             Log.d(TAG, "setMapLocation: " + l)
-            val text = findViewById(R.id.text) as TextView
+            val text = findViewById<TextView>(R.id.text)
             var s = String.format("Última atualização %s", DateFormat.getTimeInstance().format(Date()))
             s += String.format("\nLat/Lnt %f/%f, provider: %s", l.latitude, l.longitude, l.provider)
-            text.setText(s)
+            text.text = s
 
             // Desenha uma bolinha vermelha
             val circle = CircleOptions().center(latLng)
@@ -143,7 +144,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.Co
         Toast.makeText(baseContext, s, Toast.LENGTH_SHORT).show()
     }
 
-    protected fun startLocationUpdates() {
+    @SuppressLint("MissingPermission")
+    private fun startLocationUpdates() {
         Log.d(TAG, "startLocationUpdates()")
         val locRequest = LocationRequest()
         locRequest.interval = 10000
@@ -153,7 +155,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.Co
         LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locRequest, this)
     }
 
-    protected fun stopLocationUpdates() {
+    private fun stopLocationUpdates() {
         Log.d(TAG, "stopLocationUpdates()")
         LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this)
     }

@@ -145,7 +145,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.Co
             map?.animateCamera(update)
 
             Log.d(TAG, "setMapLocation: " + l)
-            val text = findViewById(R.id.text) as TextView
+            val text = findViewById<TextView>(R.id.text)
             text.text = String.format("Lat/Lnt: ${l.latitude}/${l.longitude}, provider: ${l.provider}")
 
             // Desenha uma bolinha vermelha

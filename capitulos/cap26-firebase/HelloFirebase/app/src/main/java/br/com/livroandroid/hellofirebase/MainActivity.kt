@@ -15,9 +15,9 @@ class MainActivity : AppCompatActivity() {
 
         FirebaseMessaging.getInstance().subscribeToTopic("news")
 
+        // Se precisar imprimir o Token do Firebase
         val token = FirebaseInstanceId.getInstance().token
-
-        Log.d(TAG,"Token: " + FirebaseInstanceId.getInstance().token)
+        Log.d(TAG,"Token: " + token)
 
         // Ao clicar na notificação os parâmetros são enviados pela Intent
         Log.d(TAG, "Nome: " + intent.getStringExtra("nome"));

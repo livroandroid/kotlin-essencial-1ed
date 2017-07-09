@@ -5,7 +5,7 @@ import android.util.Log
 import br.com.livroandroid.hellonotification.NotificationUtil
 
 class HelloService : IntentService("LivroAndroid") {
-    protected var count: Int = 0
+    private var count: Int = 0
     private var running: Boolean = false
     // Constantes
     private val MAX = 10

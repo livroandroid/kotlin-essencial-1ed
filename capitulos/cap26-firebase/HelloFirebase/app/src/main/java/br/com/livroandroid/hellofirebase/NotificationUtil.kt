@@ -16,7 +16,7 @@ object NotificationUtil {
         val p = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
         // Cria a notification
-        val builder = NotificationCompat.Builder(context)
+        val builder = NotificationCompat.Builder(context,"1")
                 .setContentIntent(p)
                 .setContentTitle(title)
                 .setContentText(text)
