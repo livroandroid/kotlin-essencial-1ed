@@ -17,7 +17,7 @@ class MainActivity : android.support.v7.app.AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Aqui é a mágica (A Toolbar será a action bar).
-        val toolbar = findViewById(R.id.toolbar) as Toolbar
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
         // Agora podemos continuar usando a action bar normalmente
@@ -30,7 +30,7 @@ class MainActivity : android.support.v7.app.AppCompatActivity() {
 
         // SearchView
         val item = menu.findItem(R.id.action_search)
-        val searchView = MenuItemCompat.getActionView(item) as SearchView
+        val searchView = item.actionView as SearchView
         searchView.setOnQueryTextListener(onSearch())
 
         // ShareActionProvider

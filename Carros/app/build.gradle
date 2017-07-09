@@ -7,7 +7,7 @@ android {
     buildToolsVersion "26.0.0"
     defaultConfig {
         applicationId "br.com.livroandroid.carros"
-        minSdkVersion 23
+        minSdkVersion 14
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"

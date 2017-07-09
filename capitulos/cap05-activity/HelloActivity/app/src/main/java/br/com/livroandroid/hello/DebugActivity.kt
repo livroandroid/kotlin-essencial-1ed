@@ -1,15 +1,11 @@
 package br.com.livroandroid.hello
 
-/**
- * Created by Ricardo Lecheta on 17/12/2014.
- */
-
-import android.app.Activity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 
 /* Activity que imprime logs nos métodos de ciclo de vida */
-open class DebugActivity : AppCompat() {
+open class DebugActivity : AppCompatActivity() {
     private val TAG = "livro"
 
     // Nome da classe sem o pacote

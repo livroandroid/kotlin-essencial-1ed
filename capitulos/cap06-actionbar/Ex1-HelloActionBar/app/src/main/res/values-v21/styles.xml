@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Tema Material - Android 4.0 -->
     <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
         <!-- Cor primária da action bar. -->
         <item name="android:colorPrimary">@color/primary</item>

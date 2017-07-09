@@ -23,7 +23,7 @@ class MainActivity : android.support.v7.app.AppCompatActivity() {
 
         // SearchView
         val item = menu.findItem(R.id.action_search)
-        val searchView = MenuItemCompat.getActionView(item) as SearchView
+        val searchView = item.actionView as SearchView
         searchView.setOnQueryTextListener(onSearch())
 
         // ShareActionProvider

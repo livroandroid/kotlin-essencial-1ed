@@ -4,4 +4,5 @@
     <string name="senha">Senha</string>
     <string name="cancelar">Cancelar</string>
     <string name="login">Login</string>
+    <string name="usuario">Usuário</string>
 </resources>
