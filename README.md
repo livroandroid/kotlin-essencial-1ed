@@ -1,6 +1,7 @@
 # Livro Android Essencial em Kotlin
 
 * http://livroandroid.com.br
+* http://ricardolecheta.com.br/?p=1065
 
 <img src="https://raw.githubusercontent.com/livroandroid/kotlin-essencial-1ed/master/kotlin.png"></img>
 
