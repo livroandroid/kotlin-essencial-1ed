@@ -6,7 +6,8 @@ import android.view.*
 import android.widget.Toast
 
 class HelloFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         setHasOptionsMenu(true);
         return inflater?.inflate(R.layout.fragment_hello, container, false)
     }
