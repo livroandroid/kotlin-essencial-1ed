@@ -1,10 +1,14 @@
 package br.com.livroandroid.carros
 
-import android.app.Application
+import android.support.multidex.MultiDexApplication
 import android.util.Log
 import java.lang.IllegalStateException
 
-class CarrosApplication : Application() {
+/**
+ * MultiDexApplication:
+ * https://developer.android.com/studio/build/multidex.html?hl=pt-br
+ */
+class CarrosApplication : MultiDexApplication() {
     private val TAG = "CarrosApplication"
 
     // Chamado quando o Android criar o processo da aplicação
