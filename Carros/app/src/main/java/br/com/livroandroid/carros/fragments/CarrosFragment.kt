@@ -26,19 +26,19 @@ open class CarrosFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
-            tipo = arguments.getSerializable("tipo") as TipoCarro
+            tipo = arguments?.getSerializable("tipo") as TipoCarro
         }
         // Registra para receber eventos do bus
         EventBus.getDefault().register(this)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Retorna a view /res/layout/fragment_carros.xml
-        val view = inflater?.inflate(R.layout.fragment_carros, container, false)
+        val view = inflater.inflate(R.layout.fragment_carros, container, false)
         return view
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // Views
         recyclerView.layoutManager = LinearLayoutManager(activity)
@@ -76,7 +76,7 @@ open class CarrosFragment : BaseFragment() {
     }
 
     open fun onClickCarro(carro: Carro) {
-        activity.startActivity<CarroActivity>("carro" to carro)
+        activity?.startActivity<CarroActivity>("carro" to carro)
     }
 
     @Subscribe
