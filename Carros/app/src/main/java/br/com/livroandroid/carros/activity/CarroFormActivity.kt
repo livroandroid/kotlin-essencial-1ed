@@ -7,18 +7,14 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import br.com.livroandroid.carros.CarrosApplication
 import br.com.livroandroid.carros.R
 import br.com.livroandroid.carros.domain.Carro
 import br.com.livroandroid.carros.domain.CarroService
-import br.com.livroandroid.carros.domain.CarroServiceRetrofit
 import br.com.livroandroid.carros.domain.TipoCarro
-import br.com.livroandroid.carros.domain.event.SaveCarroEvent
 import br.com.livroandroid.carros.extensions.*
 import br.com.livroandroid.carros.utils.CameraHelper
 import kotlinx.android.synthetic.main.activity_carro_form.*
 import kotlinx.android.synthetic.main.activity_carro_form_contents.*
-import org.greenrobot.eventbus.EventBus
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
@@ -83,7 +79,7 @@ class CarroFormActivity : AppCompatActivity() {
             tDesc.error = getString(R.string.msg_error_form_desc)
             return
         }
-        val dialog = ProgressDialog.show(this, "Download", "Salvando o carro, aguarde...",
+        val dialog = ProgressDialog.show(this, getString(R.string.app_name), "Salvando o carro, aguarde...",
                 false, true)
         doAsync {
             // Cria um carro para salvar/atualizar
