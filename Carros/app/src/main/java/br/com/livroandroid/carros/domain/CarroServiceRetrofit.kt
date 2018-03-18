@@ -24,34 +24,34 @@ object CarroServiceRetrofit {
     }
 
     // Busca os carros por tipo (clássicos, esportivos ou luxo)
-    fun getCarros(tipo: TipoCarro): List<Carro> {
+    fun getCarros(tipo: TipoCarro): List<Carro>? {
         val call = service.getCarros(tipo.name)
         val carros = call.execute().body()
         return carros
     }
 
     // Salva um carro
-    fun save(carro: Carro): Response {
+    fun save(carro: Carro): Response? {
         val call = service.save(carro)
         val response = call.execute().body()
         return response
     }
 
     // Deleta um carro
-    fun delete(carro: Carro): Response {
+    fun delete(carro: Carro): Response? {
         val call = service.delete(carro.id)
         val response = call.execute().body()
         return response
     }
 
     // Upload de Foto
-    fun postFoto(file: File): Response {
+    fun postFoto(file: File): Response? {
 
         // Converte para Base64
         val bytes = file.readBytes()
         val base64 = Base64.encodeToString(bytes, Base64.NO_WRAP)
 
-        val call = service.postFoto(file.name,base64)
+        val call = service.postFoto(file.name, base64)
         val response = call.execute().body()
         return response
     }
