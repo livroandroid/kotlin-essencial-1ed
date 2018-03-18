@@ -8,7 +8,7 @@ import br.com.livroandroid.carros.domain.Carro
 
 @Dao
 interface CarroDAO {
-    @Query("SELECT * FROM carro where id = :arg0")
+    @Query("SELECT * FROM carro where id = :id")
     fun getById(id: Long): Carro?
 
     @Query("SELECT * FROM carro")
