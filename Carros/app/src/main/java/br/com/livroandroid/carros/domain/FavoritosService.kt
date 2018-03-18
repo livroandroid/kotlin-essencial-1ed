@@ -17,8 +17,8 @@ object FavoritosService {
     }
     // Salva o carro ou deleta
     fun favoritar(carro: Carro): Boolean {
-        val dao = DatabaseManager.getCarroDAO()
         val favorito = isFavorito(carro)
+        val dao = DatabaseManager.getCarroDAO()
         if(favorito) {
             // Remove dos favoritos
             dao.delete(carro)
