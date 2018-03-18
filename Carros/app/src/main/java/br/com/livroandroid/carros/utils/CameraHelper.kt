@@ -39,9 +39,9 @@ class CameraHelper {
     fun open(context: Context, fileName: String): Intent {
         file = getSdCardFile(context, fileName)
         val i = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        file?.let {
+        file?.apply {
             Log.d("camera", file.toString())
-            val uri = FileProvider.getUriForFile(context, context.applicationContext.packageName + ".provider", it)
+            val uri = FileProvider.getUriForFile(context, context.applicationContext.packageName + ".provider", this)
             i.putExtra(MediaStore.EXTRA_OUTPUT, uri)
         }
         return i

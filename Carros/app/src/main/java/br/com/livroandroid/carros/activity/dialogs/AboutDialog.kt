@@ -31,7 +31,7 @@ class AboutDialog : DialogFragment() {
         return AlertDialog.Builder(activity)
                 .setTitle(R.string.about_dialog_title)
                 .setView(view)
-                .setPositiveButton(R.string.ok) { dialog, _, -> dialog.dismiss() }
+                .setPositiveButton(R.string.ok) { dialog, _ -> dialog.dismiss() }
                 .create()
     }
 
