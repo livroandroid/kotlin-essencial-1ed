@@ -37,8 +37,9 @@ class TabsAdapter(private val context: Context, fm: FragmentManager) : FragmentP
         // Clássicos, Esportivos e Luxo
         val tipo = getTipoCarro(position)
         val f: Fragment = CarrosFragment()
-        f.arguments = Bundle()
-        f.arguments.putSerializable("tipo", tipo)
+        val arguments = Bundle()
+        arguments.putSerializable("tipo", tipo)
+        f.arguments = arguments
         return f
     }
 }
