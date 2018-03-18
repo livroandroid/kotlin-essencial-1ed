@@ -12,7 +12,7 @@ Este livro é parecido com o livro Android Essencial, mas é escrito em Kotlin:
 Veja algumas das novidades do livro:
 
 - Exemplos feitos no Android Studio 3
-- Compatibilidade com Android O
+- Compatibilidade com Android 8
 - Capítulo de introdução ao Kotlin (sintaxe, extensions, lambdas, etc)
 - Capítulos básicos sobre Android (view, activity, toolbar, fragments, etc)
 - Desenvolvimento passo a passo do projeto dos carros
