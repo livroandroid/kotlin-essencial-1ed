@@ -12,9 +12,9 @@ import android.view.LayoutInflater
 import android.widget.TextView
 import br.com.livroandroid.carros.R
 
-@Suppress("DEPRECATION")
 class AboutDialog : DialogFragment() {
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+    @Suppress("DEPRECATION")
+    override fun onCreateDialog(icicle: Bundle?): Dialog {
         // Cria o HTML com o texto de sobre o aplicativo
         val aboutBody = SpannableStringBuilder()
         // Versão do aplicativo
@@ -31,19 +31,18 @@ class AboutDialog : DialogFragment() {
         return AlertDialog.Builder(activity)
                 .setTitle(R.string.about_dialog_title)
                 .setView(view)
-                .setPositiveButton(R.string.ok
-                ) { dialog, _ -> dialog.dismiss() }
+                .setPositiveButton(R.string.ok) { dialog, _, -> dialog.dismiss() }
                 .create()
     }
 
     // Retorna a versão do app registrada no build.gradle
-    fun getAppVersionName(): String {
-        val pm = activity.packageManager
-        val packageName = activity.packageName
-        var versionName: String
+    fun getAppVersionName(): String? {
+        val pm = activity?.packageManager
+        val packageName = activity?.packageName
+        var versionName: String?
         try {
-            val info = pm.getPackageInfo(packageName, 0)
-            versionName = info.versionName
+            val info = pm?.getPackageInfo(packageName, 0)
+            versionName = info?.versionName
         } catch (ex: PackageManager.NameNotFoundException) {
             versionName = "N/A"
         }
