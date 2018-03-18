@@ -16,6 +16,11 @@ class BemVindoActivity : DebugActivity() {
         val args = intent.extras
         val nome = args.getString("nome")
         textview.text = "$nome, seja bem vindo."
+
+        // Ativa o "up navigation" na action bar
+//        actionBar?.setDisplayHomeAsUpEnabled(true)
+
+
     }
 
     /*
