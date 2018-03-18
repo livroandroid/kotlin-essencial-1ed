@@ -13,6 +13,7 @@ import org.jetbrains.anko.uiThread
 
 class FavoritosFragment : CarrosFragment() {
 
+    @Suppress("UNUSED_PARAMETER")
     @Subscribe
     fun onRefresh(event: FavoritoEvent) {
         taskCarros()
@@ -33,6 +34,6 @@ class FavoritosFragment : CarrosFragment() {
 
     override fun onClickCarro(carro: Carro) {
         // Ao clicar no carro vamos navegar para a tela de detalhes
-        activity.startActivity<CarroActivity>("carro" to carro)
+        activity?.startActivity<CarroActivity>("carro" to carro)
     }
 }
