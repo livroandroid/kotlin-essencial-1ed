@@ -15,6 +15,7 @@ object FavoritosService {
         val exists = dao.getById(carro.id) != null
         return exists
     }
+
     // Salva o carro ou deleta
     fun favoritar(carro: Carro): Boolean {
         val favorito = isFavorito(carro)
@@ -28,4 +29,5 @@ object FavoritosService {
         dao.insert(carro)
         return true
     }
+
 }
