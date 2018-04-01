@@ -9,8 +9,11 @@ import android.support.v4.content.FileProvider
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 import java.io.File
 
 class MainActivity : AppCompatActivity() {
@@ -25,18 +28,39 @@ class MainActivity : AppCompatActivity() {
         b.setOnClickListener {
             // (*1*) Cria o caminho do arquivo no sdcard
             // /storage/sdcard/Android/data/br.com.livroandroid.multimidia/files/Pictures/foto.jpg
-            file = getSdCardFile("foto.jpg")
-            Log.d("livro", "Camera file: $file")
+            val f = getSdCardFile("foto.jpg")
+            file = f;
+            Log.d("livro", "Camera file: $f")
             // Chama a intent informando o arquivo para salvar a foto
             val i = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            val uri = FileProvider.getUriForFile(context, context.applicationContext.packageName + ".provider", file)
+            val uri = FileProvider.getUriForFile(context, context.applicationContext.packageName + ".provider", f)
             i.putExtra(MediaStore.EXTRA_OUTPUT, uri)
             startActivityForResult(i, 0)
         }
+
         if (savedInstanceState != null) {
             // (*2) Se girou a tela recupera o estado
             file = savedInstanceState.getSerializable("file") as File
             showImage(file)
+        }
+
+        // Upload
+        findViewById<Button>(R.id.btUpload).setOnClickListener {onClickUpload()}
+    }
+
+    private fun onClickUpload() {
+        doAsync {
+            file?.apply {
+                val response = UploadService.upload(this)
+
+                uiThread {
+                    val msg = response.msg
+                    val url = response.url
+                    // Imprime a resposta com a URL da foto.
+                    toast(msg + "\n" + url)
+
+                }
+            }
         }
     }
 

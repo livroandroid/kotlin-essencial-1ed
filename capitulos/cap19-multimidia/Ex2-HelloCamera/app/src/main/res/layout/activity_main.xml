@@ -5,12 +5,24 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <ImageButton
-        android:id="@+id/btAbrirCamera"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@android:drawable/ic_menu_camera"
-        android:text="Abrir a Camera" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/btAbrirCamera"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@android:drawable/ic_menu_camera"
+            android:text="Abrir a Camera" />
+
+        <Button
+            android:id="@+id/btUpload"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:src="@android:drawable/ic_menu_camera"
+            android:text="Upload" />
+
+    </LinearLayout>
 
     <View
         android:layout_width="fill_parent"
