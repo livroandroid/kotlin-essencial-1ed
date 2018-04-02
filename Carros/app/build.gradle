@@ -44,12 +44,12 @@ dependencies {
     implementation 'com.android.support:cardview-v7:27.1.0'
 
     // Google Play Services - Mapas e Localização
-    implementation 'com.google.android.gms:play-services-maps:11.8.0'
-    implementation 'com.google.android.gms:play-services-location:11.8.0'
+    implementation 'com.google.android.gms:play-services-maps:12.0.1'
+    implementation 'com.google.android.gms:play-services-location:12.0.1'
 
     // HTTP e Download Imagens
     implementation 'com.squareup.picasso:picasso:2.5.2'
-    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
 
     // Google-GSON
     implementation 'com.google.code.gson:gson:2.8.2'
