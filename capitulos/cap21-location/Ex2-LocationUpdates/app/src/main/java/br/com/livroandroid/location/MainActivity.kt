@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.Location
 import android.os.Bundle
+import android.os.Looper
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -14,7 +15,9 @@ import android.widget.Toast
 import br.com.livroandroid.hellovideoview.PermissionUtils
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
+import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -30,7 +33,7 @@ import java.util.*
 
  * @author Ricardo Lecheta
  */
-class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
+class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     private var map: GoogleMap? = null
     private var mapFragment: SupportMapFragment? = null
     private var mGoogleApiClient: GoogleApiClient? = null
@@ -144,26 +147,32 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.Co
         Toast.makeText(baseContext, s, Toast.LENGTH_SHORT).show()
     }
 
+    // Listener para monitorar o GPS
+    private val locationCallback = object : LocationCallback() {
+        override fun onLocationResult(locationResult: LocationResult) {
+            val location = locationResult.lastLocation
+            // Nova localizaçao: atualiza a interface
+            setMapLocation(location)
+
+        }
+    }
+
     @SuppressLint("MissingPermission")
     private fun startLocationUpdates() {
         Log.d(TAG, "startLocationUpdates()")
-        val locRequest = LocationRequest()
+        val locRequest = LocationRequest.create()
         locRequest.interval = 10000
         locRequest.fastestInterval = 5000
         locRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
 
-        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locRequest, this)
+        val locClient = LocationServices.getFusedLocationProviderClient(this)
+        locClient.requestLocationUpdates(locRequest, locationCallback, Looper.myLooper())
     }
 
     private fun stopLocationUpdates() {
         Log.d(TAG, "stopLocationUpdates()")
-        LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this)
-    }
-
-    override fun onLocationChanged(location: Location) {
-        Log.d(TAG, "onLocationChanged(): " + location)
-        // Nova localizaçao: atualiza a interface
-        setMapLocation(location)
+        val locClient = LocationServices.getFusedLocationProviderClient(this)
+        locClient.removeLocationUpdates(locationCallback)
     }
 
     companion object {

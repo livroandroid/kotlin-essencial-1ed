@@ -31,7 +31,7 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
     // Firebase
-    compile 'com.google.firebase:firebase-messaging:11.0.2'
+    implementation 'com.google.firebase:firebase-messaging:11.0.2'
 }
 
 // ADD THIS AT THE BOTTOM

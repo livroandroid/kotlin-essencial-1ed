@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.Location
 import android.os.Bundle
+import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -123,23 +124,43 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.Co
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_my_location -> {
-                // Última localização
-                val l = LocationServices.FusedLocationApi.getLastLocation(
-                        mGoogleApiClient)
 
-                Log.d(TAG, "lastLocation: " + l)
+                // Obtém última localização
+                getLastLocation()
 
-                // Atualiza a localização do mapa
-                setMapLocation(l)
                 return true
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
+    // Busca a última localização GPS do usuário
+    private fun getLastLocation() {
+
+        val fusedClient = LocationServices.getFusedLocationProviderClient(this)
+
+        // Verifica permissões
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // Este "if" o Android Studio pede para colocar.
+            // Alguma permissão foi negada, agora é com você :-)
+            alertAndFinish()
+            return
+        }
+
+        // Fused Location Provider API
+        fusedClient.lastLocation
+                .addOnSuccessListener { location ->
+                    // Atualiza a localização do mapa
+                    setMapLocation(location)
+                }
+                .addOnFailureListener {
+                    Log.d(TAG, "Não foi possível ao buscar a localização do GPS")
+                }
+    }
+
     // Atualiza a coordenada do mapa
-    private fun setMapLocation(l: Location?) {
-        if (map != null && l != null) {
+    private fun setMapLocation(l: Location) {
+        if (map != null) {
             val latLng = LatLng(l.latitude, l.longitude)
             val update = CameraUpdateFactory.newLatLngZoom(latLng, 15f)
             map?.animateCamera(update)
