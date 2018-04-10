@@ -33,7 +33,7 @@ object NotificationUtil {
         // Intent para disparar o broadcast
         val p = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         // Cria a notificação
-        val builder = NotificationCompat.Builder(context, "id")
+        val builder = NotificationCompat.Builder(context, CHANNEL_ID)
                 .setContentIntent(p)
                 .setContentTitle(title)
                 .setContentText(msg)
