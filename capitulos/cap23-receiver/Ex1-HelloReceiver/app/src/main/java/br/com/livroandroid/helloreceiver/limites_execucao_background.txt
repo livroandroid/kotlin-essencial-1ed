@@ -1,0 +1,9 @@
+https://developer.android.com/about/versions/oreo/background.html?hl=pt-br
+
+https://developer.android.com/guide/components/broadcast-exceptions.html
+
+As part of the Android 8.0 (API level 26) Background Execution Limits,
+apps that target the API level 26 or higher can no longer register broadcast receivers for implicit broadcasts in their manifest.
+
+However, several broadcasts are currently exempted from these limitations.
+Apps can continue to register listeners for the following broadcasts, no matter what API level the apps target.

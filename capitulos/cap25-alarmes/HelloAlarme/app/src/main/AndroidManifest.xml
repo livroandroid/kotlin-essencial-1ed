@@ -18,9 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".LembremeDeComerReceiver">
+        <receiver android:name=".LembremeDeComerReceiver" android:exported="false">
             <intent-filter>
-                <action android:name="br.com.livroandroid.helloalarme.LEMBREME_DE_COMER" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>

@@ -8,20 +8,11 @@ import br.com.livroandroid.hellonotification.NotificationUtil
 import java.util.*
 
 class LembremeDeComerReceiver : BroadcastReceiver() {
-
-    companion object {
-        // Constantes
-        val TAG = "livroandroid"
-        val ACTION = "br.com.livroandroid.helloalarme.LEMBREME_DE_COMER"
-    }
+    private val TAG = "livroandroid"
 
     override fun onReceive(context: Context, intent: Intent) {
         Log.d(TAG, "Você precisa comer: " + Date())
-
         val notifIntent = Intent(context, MainActivity::class.java)
-
-        NotificationUtil.create(context, 1, notifIntent,
-                "Hora de comer algo...",
-                "Que tal uma fruta?")
+        NotificationUtil.create(context, 1, notifIntent, "Hora de comer algo...", "Que tal uma fruta?")
     }
 }
