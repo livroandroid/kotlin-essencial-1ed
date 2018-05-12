@@ -60,20 +60,40 @@ open class CarrosFragment : BaseFragment() {
         taskCarros()
     }
 
-    open fun taskCarros() {
-        // Abre uma thread
-        doAsync {
-            // Busca os carros
-            carros = CarroService.getCarros(tipo)
-            // Atualiza a lista na UI Thread
-            uiThread {
-                recyclerView.adapter = CarroAdapter(carros) { onClickCarro(it) }
+//    open fun taskCarros() {
+//        // Abre uma thread
+//        doAsync {
+//            // Busca os carros
+//            carros = CarroService.getCarros(tipo)
+//            // Atualiza a lista na UI Thread
+//            uiThread {
+//                recyclerView.adapter = CarroAdapter(carros) { onClickCarro(it) }
+//
+//                // Termina a animação do Swipe to Refresh
+//                swipeToRefresh.isRefreshing = false
+//            }
+//        }
+//    }
 
-                // Termina a animação do Swipe to Refresh
-                swipeToRefresh.isRefreshing = false
+    fun taskCarros() {
+        // Mostra uma janela de progresso
+        val dialog = ProgressDialog.show(activity, getString(R.string.app_name),
+                "Por favor aguarde...", false, true)
+        object : Thread() {
+            override fun run() {
+                // Busca os carros
+                carros = CarroService.getCarros(tipo)
+                // Atualiza a lista
+                activity?.runOnUiThread(Runnable {
+                    // Atualiza a lista
+                    recyclerView.adapter = CarroAdapter(carros) { onClickCarro(it) }
+                    // Fecha o ProgressDialog
+                    dialog.dismiss()
+                })
             }
-        }
+        }.start()
     }
+
 
     open fun onClickCarro(carro: Carro) {
         activity?.startActivity<CarroActivity>("carro" to carro)
