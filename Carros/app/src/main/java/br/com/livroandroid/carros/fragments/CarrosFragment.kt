@@ -1,5 +1,6 @@
 package br.com.livroandroid.carros.fragments
 
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
@@ -34,8 +35,7 @@ open class CarrosFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Retorna a view /res/layout/fragment_carros.xml
-        val view = inflater.inflate(R.layout.fragment_carros, container, false)
-        return view
+        return inflater.inflate(R.layout.fragment_carros, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -75,7 +75,7 @@ open class CarrosFragment : BaseFragment() {
 //        }
 //    }
 
-    fun taskCarros() {
+    open fun taskCarros() {
         // Mostra uma janela de progresso
         val dialog = ProgressDialog.show(activity, getString(R.string.app_name),
                 "Por favor aguarde...", false, true)
