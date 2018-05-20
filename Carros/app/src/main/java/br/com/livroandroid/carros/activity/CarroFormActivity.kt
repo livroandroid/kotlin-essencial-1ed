@@ -19,7 +19,7 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
 class CarroFormActivity : AppCompatActivity() {
-    val camera = CameraHelper()
+    private val camera = CameraHelper()
     // O carro pode ser nulo no caso de um Novo Carro
     val carro:Carro? by lazy { intent.getParcelableExtra<Carro>("carro") }
     override fun onCreate(icicle: Bundle?) {
@@ -68,7 +68,7 @@ class CarroFormActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-    fun taskSalvar() {
+    private fun taskSalvar() {
         if(tNome.isEmpty()) {
             // Valida se o campo nome foi preenchido
             tNome.error = getString(R.string.msg_error_form_nome)
@@ -112,7 +112,7 @@ class CarroFormActivity : AppCompatActivity() {
         }
     }
     // Ao clicar na imagem do AppHeader abre a câmera
-    fun onClickAppBarImg() {
+    private fun onClickAppBarImg() {
         val ms = System.currentTimeMillis()
         // Nome do arquivo da foto
         val fileName = if (carro != null)
